@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+{%block title%}Бронювання{%endblock%}
+{%block content%}
+<h2>Бронювання</h2>
+<form method="get">
+    <input type="date" name="date" value="{{date}}">
+    <button type="submit">Показати</button>
+</form>
+
+{% if bookings %}
+    <ul>
+        {%for booking in bookings%}
+            <li>
+                {{booking.client.name}} >|< столик {{booking.table.number}}:
+                <small>{{booking.start_time}} -- {{booking.end_time}}</small>
+            </li>
+        {%endfor%}
+    </ul>
+    {$ elif date %}
+        <p>Немає бронювань на цю дату</p>ї
+{%endif%}
+{%endblock%}

@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+{%block title%}Клієнт: {{client.name}}{%endblock%}
+{%block content%}
+<h2>Клієнт: {{client.name}}</h2>
+<p><strong>Телефон:</strong> {{client.phone}}</p>
+{% if client.email %}
+    <p><strong>Email:</strong> {{client.email}}</p>
+{% endif %}
+<p><strong>Зареєстрований:</strong> {{client.created_at}}</p>
+<hr>
+<h3>
+    {% for booking in bookings %}
+        <li>
+            {{booking.date}} >|< столик {{booking.table.number}}:
+            <small>{{booking.start_time}} -- {{booking.end_time}}</small>
+        </li>
+    {%empty%}
+        <li>Бронювань немає</li>
+    {%endfor%}
+</h3>
+<a href="/clients/"> --< Назад до списку клієнтів</a>
+{%endblock%}
