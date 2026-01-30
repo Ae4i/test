@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Активні користувачі{% endblock %}
+
+{% block content %}
+<h2>Активні користувачі</h2>
+
+<ul>
+  {% for client in clients %}
+    <li>
+      <a href="/table-booking/clients/{{ client.id }}/">
+        Столик {{ client.seats }} ({{ client.seats }} місць)
+      </a>
+    </li>
+  {% empty %}
+    <li>Немає клієнтів</li>
+  {% endfor %}
+</ul>
+{% endblock %}
