@@ -24,7 +24,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% block title %}Мій Django сайт{% endblock %}</title>
+    <title>Мій Django сайт</title>
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/site.css' %}" rel="stylesheet">
 </head>
@@ -48,6 +48,18 @@
                 <li class="nav-item">
                   <a class="nav-link" href="/table-booking/bookings/">Бронювання</a>
                 </li>
+                  {% if user.is_authenticated %}
+                     <li>
+                         <a href="/accounts/logout/">Вихід</a>
+                       </li>
+                    {% else %}
+                       <li>
+                         <a href="/accounts/login/">Вхід</a>
+                       </li>
+                       <li>
+                         <a href="/accounts/register/">Зареєструватися</a>
+                       </li>
+                    {% endif %}
               </ul>
             </div>
           </div>
@@ -61,8 +73,8 @@
 <!--        </nav>-->
     </header>
     <hr>
-    <main >
-        {% block content %}{% endblock %}
+    <main>
+
     </main>
     <hr>
 </body>

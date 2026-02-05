@@ -8,8 +8,8 @@
 <ul>
   {% for client in clients %}
     <li>
-      <a href="/table-booking/clients/{{ client.id }}/">
-        Столик {{ client.seats }} ({{ client.seats }} місць)
+      <a href="/table-booking/clients/{{ client.name }}/">
+        Клієнт {{ client.name }} {{ client.telephone }} {{ client.email }}
       </a>
     </li>
   {% empty %}
